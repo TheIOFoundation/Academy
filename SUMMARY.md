@@ -19,4 +19,5 @@
 
 ## Group 1
 
+* [Notes](group-1/notes.md)
 * [Operational](group-1/operational.md)
