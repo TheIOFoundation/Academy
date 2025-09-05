@@ -1,8 +1,12 @@
 # Table of contents
 
+## NOTICE
+
+* [Section Under Maintenance](README.md)
+
 ## About
 
-* [Introduction](README.md)
+* [Introduction](<README (1).md>)
 * [Objectives](about/objectives.md)
 * [Media Kit](about/media-kit.md)
 * [Get Involved](about/get-involved.md)
