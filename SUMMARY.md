@@ -4,9 +4,10 @@
 
 * [Introduction](README.md)
 * [Objectives](about/objectives.md)
-* [Join us](about/join-us.md)
-* [Support Us](about/support-us.md)
+* [Media Kit](about/media-kit.md)
+* [Get Involved](about/get-involved.md)
 * [Partners](about/partners.md)
+* [Support Us](about/support-us.md)
 
 ## Pedagogical
 
