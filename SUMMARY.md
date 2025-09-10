@@ -7,11 +7,14 @@
 ## About
 
 * [Introduction](<README (1).md>)
-* [Objectives](about/objectives.md)
-* [Media Kit](about/media-kit.md)
+* [Project Information](about/project-information.md)
 * [Get Involved](about/get-involved.md)
 * [Partners](about/partners.md)
 * [Support Us](about/support-us.md)
+* [Awards](about/awards.md)
+* [Media Archive](about/media-archive.md)
+* [Media Kit](about/media-kit.md)
+* [Frequently Asked Questions](about/frequently-asked-questions.md)
 
 ## Pedagogical
 
