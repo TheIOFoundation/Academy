@@ -1,6 +1,6 @@
 ---
-icon: bullseye-arrow
+icon: circle-info
 ---
 
-# Objectives
+# Project Information
 
