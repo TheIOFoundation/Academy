@@ -1,4 +1,7 @@
 ---
+description: >-
+  Learn about The IO Foundation's academy offer. Be an architect of
+  civilization.
 icon: circle-info
 ---
 
