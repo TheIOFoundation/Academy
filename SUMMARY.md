@@ -8,6 +8,7 @@
 
 * [Spotlight](about/spotlight.md)
 * [Project Information](about/project-information.md)
+* [Areas](about/areas.md)
 * [Get Involved](about/get-involved.md)
 * [Partners](about/partners.md)
 * [Support Us](about/support-us.md)
