@@ -2,7 +2,7 @@
 
 
 
-SERIES > HABITAT > TOPIC > COURSE (3 Levels)
+SERIES > HABITAT > TOPIC > COURSE (3 Levels) > Modules
 
 * Foundation
 * Specialization
