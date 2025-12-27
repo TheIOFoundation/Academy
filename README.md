@@ -61,7 +61,9 @@ Both are securely stored on a blockchain, ensuring validity.
 {% endcolumn %}
 {% endcolumns %}
 
-## Attributions
+<details>
+
+<summary>Attributions</summary>
 
 Photo by [Luis Tosta](https://unsplash.com/@luis_tosta?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/mirror-image-of-bookcase-COAbFWdOf5s?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
@@ -74,3 +76,6 @@ Photo by [Taylor Vick](https://unsplash.com/@tvick?utm_source=unsplash\&utm_medi
 Photo by [Miguel Henriques](https://unsplash.com/@miguel_photo?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/man-speaking-in-front-of-crowd-RfiBK6Y_upQ?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
 Photo by [Jessica Mangano](https://unsplash.com/@jfdelp?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-person-holding-a-wooden-toy-in-their-hand-z4fOSk2XFUA?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
+
+</details>
+
