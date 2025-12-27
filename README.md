@@ -63,7 +63,7 @@ Both are securely stored on a blockchain, ensuring validity.
 
 <details>
 
-<summary><i class="fa-copyright">:copyright:</i> <strong>Attributions</strong></summary>
+<summary><i class="fa-copyright">:copyright:</i> <strong>Attributions</strong> <i class="fa-hands-praying">:hands-praying:</i> <span data-gb-custom-inline data-tag="emoji" data-code="1f647-2642">🙇‍♂️</span></summary>
 
 Photo by [Luis Tosta](https://unsplash.com/@luis_tosta?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/mirror-image-of-bookcase-COAbFWdOf5s?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
