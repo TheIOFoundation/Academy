@@ -63,7 +63,7 @@ Both are securely stored on a blockchain, ensuring validity.
 
 <details>
 
-<summary><strong>Attributions</strong></summary>
+<summary><i class="fa-copyright">:copyright:</i> <strong>Attributions</strong></summary>
 
 Photo by [Luis Tosta](https://unsplash.com/@luis_tosta?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/mirror-image-of-bookcase-COAbFWdOf5s?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
