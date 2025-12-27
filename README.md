@@ -27,12 +27,12 @@ layout:
 # Spotlight
 
 {% columns %}
-{% column width="58.333333333333336%" %}
+{% column width="66.66666666666666%" %}
 Need to verify a certification issued by The IO Foundation?
 {% endcolumn %}
 
-{% column width="41.666666666666664%" %}
-<a href="https://short.theiofoundation.org/CheckTIOFCertificate" class="button primary" data-icon="file-certificate">Verify a certification</a>
+{% column width="33.33333333333334%" %}
+<p align="right"><a href="https://short.theiofoundation.org/CheckTIOFCertificate" class="button primary" data-icon="file-certificate">Verify a certification</a></p>
 {% endcolumn %}
 {% endcolumns %}
 
