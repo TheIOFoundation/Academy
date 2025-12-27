@@ -1,13 +1,10 @@
 # Table of contents
 
-## NOTICE
-
-* [Section Under Maintenance](README.md)
-
 ## About
 
-* [Spotlight](about/spotlight.md)
+* [Spotlight](README.md)
 * [Project Information](about/project-information.md)
+* [Copy of Project Information](about/copy-of-project-information.md)
 * [Learning Areas](about/learning-areas.md)
 * [Get Involved](about/get-involved.md)
 * [Partners](about/partners.md)
@@ -24,6 +21,10 @@
 ## Institutional
 
 * [Applicable Policies](institutional/applicable-policies.md)
+
+## NOTICE
+
+* [Section Under Maintenance](<README (1).md>)
 
 ## Group 1
 

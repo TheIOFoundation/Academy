@@ -1,30 +1,38 @@
 ---
-description: Learn about The IO Foundation's academy project.
+description: ⚡Brewing something new. Thanks for hanging in there!
 icon: circle-info
+cover: >-
+  ../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF Page Header Academy XXX
+  v1.0.png
+coverY: 0
+layout:
+  width: default
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
 ---
 
 # Project Information
 
-## About
+{% hint style="danger" %}
+## DISCLAIMER
 
-At The IO Foundation, our Academy is a dedicated learning platform designed to educate individuals and organizations about Data-Centric Digital Rights (DCDR), Technical Standards, and a wide range of related topics. Through comprehensive courses and resources, we provide the knowledge and tools needed to navigate the complexities of digital rights and technical frameworks.&#x20;
+Please note that this section of our site is currently undergoing maintenance to update its content.\
+\
+We apologize for any inconvenience as we ensure that we finalized it in the shortest of times.\
+\
+THE IO FOUNDATION
+{% endhint %}
 
-Our Academy also offers certification programs, enabling participants to validate their expertise and apply their skills to advance responsible, data-centric practices in their work. With a focus on practical learning and real-world application, the TIOF Academy equips learners to champion digital rights and technical excellence.
-
-
-
-## Accreditations
-
-HRDCorp
-
-
-
-
-
-
-
-## Digital Certificates and Badges
-
-To recognize the successful completion of our training and certification programs, we issue Digital Certificates and Badges. Securely stored on a blockchain, these credentials are tamper-proof, ensuring their authenticity and integrity.
-
-Our certificates and badges validate your expertise in Data-Centric Digital Rights, Technical Standards, and more, providing a trusted, verifiable way to showcase your skills and commitment to advancing responsible digital practices.

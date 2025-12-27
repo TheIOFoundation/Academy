@@ -3,6 +3,27 @@ description: >-
   Learn about The IO Foundation's academy offer. Be an architect of
   civilization.
 icon: book-open-reader
+cover: >-
+  ../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF Page Header Academy XXX
+  v1.0.png
+coverY: 0
+layout:
+  width: default
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
 ---
 
 # Learning Areas
@@ -107,6 +128,8 @@ _Build your regulatory knowledge with our in-depth technical codes resources._
 
 ## Attributions
 
+Photo by [Luis Tosta](https://unsplash.com/@luis_tosta?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/mirror-image-of-bookcase-COAbFWdOf5s?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
+
 Photo by [Robynne O](https://unsplash.com/@roborobs?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-group-of-people-standing-next-to-each-other-HOrhCnQsxnQ?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
 Photo by [Rodion Kutsaiev](https://unsplash.com/@frostroomhead?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/white-paper-roll-on-white-table-6W8H4puOJB0?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
@@ -116,3 +139,4 @@ Photo by [Taylor Vick](https://unsplash.com/@tvick?utm_source=unsplash\&utm_medi
 Photo by [Miguel Henriques](https://unsplash.com/@miguel_photo?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/man-speaking-in-front-of-crowd-RfiBK6Y_upQ?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
 Photo by [Jessica Mangano](https://unsplash.com/@jfdelp?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-person-holding-a-wooden-toy-in-their-hand-z4fOSk2XFUA?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
+
