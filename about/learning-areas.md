@@ -9,99 +9,101 @@ icon: book-open-reader
 
 ## About
 
+The IO Foundation's Academy provides technologists, students, policy makers and researchers with curated, high-quality resources across key domains essential to modern digital infrastructure.
 
-
-
-
-
+`Start building expertise today: browse the areas below and discover content designed to advance your professional knowledge.`
 
 ## TIOF Series
 
-
+### DCDR Series
 
 {% columns %}
 {% column %}
-### DCDR Series
-
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy DCDR Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
 <a href="https://short.theiofoundation.org/LearnDCDR" class="button primary">Check this series on our learning platform</a>
 {% endcolumn %}
 
 {% column %}
+Explore the principles and practices of the Data-Centric Digital Rights Framework and how to ensure trust in modern infrastructure.
 
+Courses in this Series help you gain insights into the ecosystem that supports critical operations and communications in a digital world.&#x20;
+
+_Advance your expertise by diving deeper into our specialized DCDR courses._
 {% endcolumn %}
 {% endcolumns %}
 
-
+### Technology Series
 
 {% columns %}
 {% column %}
-### Technology Series
-
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Technology Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
 <a href="https://short.theiofoundation.org/LearnTechnology" class="button primary">Check this series on our learning platform</a>
 {% endcolumn %}
 
 {% column %}
+Discover emerging and established technologies shaping the future of digital infrastructure and innovation.
 
+This Series focuses on understanding key concepts in computing, networking and systems that drive technological progress.&#x20;
+
+_Elevate your technical knowledge through our comprehensive technology learning paths._
 {% endcolumn %}
 {% endcolumns %}
 
-
+### Skill Series
 
 {% columns %}
 {% column %}
-### Skill Series
-
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Skill Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
 <a href="https://short.theiofoundation.org/LearnSkills" class="button primary">Check this series on our learning platform</a>
 {% endcolumn %}
 
 {% column %}
+Develop essential soft skills that enhance collaboration, leadership and problem-solving in technical environments.
 
+Master communication, adaptability and teamwork to thrive in dynamic, interdisciplinary projects.
+
+_Strengthen your professional capabilities with our targeted skills development resources._
 {% endcolumn %}
 {% endcolumns %}
 
-
+### Product Series
 
 {% columns %}
 {% column %}
-### Product Series
-
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Product Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
 <a href="https://short.theiofoundation.org/LearnProducts" class="button primary">Check this series on our learning platform</a>
 {% endcolumn %}
 
 {% column %}
+Examine a range of technology products designed for performance, scalability and integration in real-world applications.
 
+With these courses you will learn about specific solutions that will enhance your technical expertise.
+
+_Explore our curated content to stay informed on leading product innovations._
 {% endcolumn %}
 {% endcolumns %}
 
-
+### Technical Code Series
 
 {% columns %}
 {% column %}
-### Technical Code Series
-
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Technical Code Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
 <a href="https://short.theiofoundation.org/LearnTechnicalCodes" class="button primary">Check this series on our learning platform</a>
 {% endcolumn %}
 
 {% column %}
+Navigate the standards and regulations governing technical infrastructure across national and regional jurisdictions.
 
+Through these courses you will understand the compliance requirements that ensure safety, efficiency and interoperability in your projects.&#x20;
+
+_Build your regulatory knowledge with our in-depth technical codes resources._
 {% endcolumn %}
 {% endcolumns %}
-
-
-
-
-
-
 
 ## Attributions
 
