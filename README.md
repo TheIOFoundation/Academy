@@ -32,7 +32,7 @@ Need to verify a certification issued by The IO Foundation?
 {% endcolumn %}
 
 {% column width="33.33333333333334%" %}
-<p align="right"><a href="https://short.theiofoundation.org/CheckTIOFCertificate" class="button primary" data-icon="file-certificate">Verify a certification</a></p>
+<p align="right"><a href="https://short.theiofoundation.org/CheckTIOFCertificate" class="button primary" data-icon="file-certificate">Verify certificate</a></p>
 {% endcolumn %}
 {% endcolumns %}
 
