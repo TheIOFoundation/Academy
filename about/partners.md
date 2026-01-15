@@ -1,5 +1,6 @@
 ---
 description: ⚡Brewing something new. Thanks for hanging in there!
+hidden: true
 noIndex: true
 icon: handshake
 cover: >-

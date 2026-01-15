@@ -28,4 +28,4 @@
 
 ## TEMP
 
-* [Notes](temp/notes.md)
+* [Notes](group-1/notes.md)
