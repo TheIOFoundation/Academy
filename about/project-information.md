@@ -1,5 +1,6 @@
 ---
 description: ⚡Brewing something new. Thanks for hanging in there!
+noIndex: true
 icon: circle-info
 cover: >-
   ../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF Page Header Academy XXX

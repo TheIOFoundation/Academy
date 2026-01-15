@@ -1,5 +1,7 @@
 ---
 description: ⚡Brewing something new. Thanks for hanging in there!
+hidden: true
+noIndex: true
 icon: palette
 cover: >-
   ../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF Page Header Academy XXX

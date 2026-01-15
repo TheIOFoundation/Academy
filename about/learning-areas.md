@@ -42,7 +42,7 @@ The IO Foundation's Academy provides technologists, students, policy makers and 
 {% column %}
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy DCDR Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
-<a href="https://short.theiofoundation.org/LearnDCDR" class="button primary">Check this series on our learning platform</a>
+<a class="button primary">Check this series on our learning platform (Soon)</a>
 {% endcolumn %}
 
 {% column %}
@@ -60,7 +60,7 @@ _Advance your expertise by diving deeper into our specialized DCDR courses._
 {% column %}
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Technology Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
-<a href="https://short.theiofoundation.org/LearnTechnology" class="button primary">Check this series on our learning platform</a>
+<a class="button primary">Check this series on our learning platform (Soon)</a>
 {% endcolumn %}
 
 {% column %}
@@ -78,7 +78,7 @@ _Elevate your technical knowledge through our comprehensive technology learning 
 {% column %}
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Skill Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
-<a href="https://short.theiofoundation.org/LearnSkills" class="button primary">Check this series on our learning platform</a>
+<a class="button primary">Check this series on our learning platform (Soon)</a>
 {% endcolumn %}
 
 {% column %}
@@ -96,7 +96,7 @@ _Strengthen your professional capabilities with our targeted skills development 
 {% column %}
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Product Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
-<a href="https://short.theiofoundation.org/LearnProducts" class="button primary">Check this series on our learning platform</a>
+<a class="button primary">Check this series on our learning platform (Soon)</a>
 {% endcolumn %}
 
 {% column %}
@@ -114,7 +114,7 @@ _Explore our curated content to stay informed on leading product innovations._
 {% column %}
 <figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy Technical Code Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
 
-<a href="https://short.theiofoundation.org/LearnTechnicalCodes" class="button primary">Check this series on our learning platform</a>
+<a class="button primary">Check this series on our learning platform (Soon)</a>
 {% endcolumn %}
 
 {% column %}
@@ -126,7 +126,11 @@ _Build your regulatory knowledge with our in-depth technical codes resources._
 {% endcolumn %}
 {% endcolumns %}
 
-## Attributions
+
+
+<details>
+
+<summary><strong>Attributions</strong></summary>
 
 Photo by [Luis Tosta](https://unsplash.com/@luis_tosta?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/mirror-image-of-bookcase-COAbFWdOf5s?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
@@ -140,3 +144,4 @@ Photo by [Miguel Henriques](https://unsplash.com/@miguel_photo?utm_source=unspla
 
 Photo by [Jessica Mangano](https://unsplash.com/@jfdelp?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-person-holding-a-wooden-toy-in-their-hand-z4fOSk2XFUA?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
+</details>

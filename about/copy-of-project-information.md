@@ -1,6 +1,7 @@
 ---
 description: Learn about The IO Foundation's academy project.
 hidden: true
+noIndex: true
 icon: circle-info
 ---
 

@@ -26,7 +26,6 @@
 
 * [Section Under Maintenance](<README (1).md>)
 
-## Group 1
+## TEMP
 
-* [Notes](group-1/notes.md)
-* [Operational](group-1/operational.md)
+* [Notes](temp/notes.md)
