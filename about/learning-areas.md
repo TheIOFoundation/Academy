@@ -90,6 +90,24 @@ _Strengthen your professional capabilities with our targeted skills development 
 {% endcolumn %}
 {% endcolumns %}
 
+### SDO Series
+
+{% columns %}
+{% column %}
+<figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Academy SDO Series XXX v1.0.png" alt=""><figcaption></figcaption></figure>
+
+<a class="button primary">Check this series on our learning platform (Soon)</a>
+{% endcolumn %}
+
+{% column %}
+Dive into the world of Standards Development Organizations that shape global technical standards for data centers, IT infrastructure and emerging technologies.
+
+Understand how consensus-driven processes create reliable, interoperable frameworks used by technologists worldwide.
+
+_Deepen your grasp of industry standards by exploring our SDO resources and elevate your compliance expertise today._
+{% endcolumn %}
+{% endcolumns %}
+
 ### Product Series
 
 {% columns %}
@@ -143,5 +161,7 @@ Photo by [Taylor Vick](https://unsplash.com/@tvick?utm_source=unsplash\&utm_medi
 Photo by [Miguel Henriques](https://unsplash.com/@miguel_photo?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/man-speaking-in-front-of-crowd-RfiBK6Y_upQ?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
 Photo by [Jessica Mangano](https://unsplash.com/@jfdelp?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/a-person-holding-a-wooden-toy-in-their-hand-z4fOSk2XFUA?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
+
+Photo by [GuerrillaBuzz](https://unsplash.com/@guerrillabuzz?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/diagram-7hA2wqBcSF8?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
 </details>
