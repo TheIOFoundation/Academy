@@ -38,7 +38,7 @@ The IO Foundation's Academy provides technologists, students, policy makers and 
 
 `Start building expertise today: browse the areas below and discover content designed to advance your professional knowledge.`
 
-## TIOF Series
+## Areas
 
 ### DCDR Series
 
@@ -149,4 +149,22 @@ Photo by [Jessica Mangano](https://unsplash.com/@jfdelp?utm_source=unsplash\&utm
 Photo by [GuerrillaBuzz](https://unsplash.com/@guerrillabuzz?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/diagram-7hA2wqBcSF8?utm_source=unsplash\&utm_medium=referral\&utm_content=creditCopyText)
 
 </details>
+
+### TIOF Series
+
+{% columns %}
+{% column %}
+<figure><img src="../.gitbook/assets/[TIOF] Comms [P] 0000-00-00 TIOF - Card Alumns XXX v1.0.png" alt=""><figcaption></figcaption></figure>
+
+<a class="button primary">Check this series on our learning platform (Soon)</a>
+{% endcolumn %}
+
+{% column %}
+Dive into the world of TIOF with our internal training and fellowship courses, designed to sharpen your skills and develop leaders who embrace the DCDR Principles.
+
+With targeted pathways, fellowships, and practical mentoring that will help you get protecting users and their digital twins by design.
+
+_Deepen your operational edge by exploring our TIOF resources and elevate your skills and impact today._
+{% endcolumn %}
+{% endcolumns %}
 
