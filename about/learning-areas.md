@@ -94,7 +94,7 @@ _Elevate your technical knowledge through our comprehensive technology learning 
 {% endcolumn %}
 {% endcolumns %}
 
-### Skill Series
+### Skills Series
 
 {% columns %}
 {% column %}
