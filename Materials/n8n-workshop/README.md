@@ -1,6 +1,6 @@
 # n8n workshop materials (Argos Club UMN, 15 Oct 2026)
 
-Seven beginner flows of increasing difficulty for the Argos Club n8n workshop. Every attendee builds or imports them on the staging n8n instance.
+Eight beginner flows of increasing difficulty for the Argos Club n8n workshop. Every attendee builds or imports them on the staging n8n instance.
 
 Before the session, everyone must complete [PREWORK.md](PREWORK.md).
 
@@ -15,6 +15,7 @@ Before the session, everyone must complete [PREWORK.md](PREWORK.md).
 | F5 | `flows/F5-neighbours-form.json` | A web form that sends messages to your Telegram | Import then modify | Telegram |
 | F6 | `flows/F6-ai-news-anchor.json` | Gemini writes a quake bulletin in the language and tone you pick | Import then edit the prompt | Telegram and Gemini |
 | F7 | `flows/F7-agent-with-tools.json` | Chat with an AI agent that uses weather, Wikipedia and a calculator | You build it | Gemini |
+| F8 | `flows/F8-mcp-server-and-client.json` | Your own MCP server (weather and quake tools, protected by a token) and your agent using it as an MCP client | You build it in two steps | Gemini and a Bearer Auth credential |
 
 ## How to import a flow
 
@@ -33,8 +34,9 @@ Credentials are never included in these files. Each attendee creates their own.
 ## Notes for the instructor
 
 - The staging instance is reachable over NetBird only. Telegram Trigger and any incoming webhook from the Internet will not work. All flows only send messages.
-- F4 uses the NASA key `DEMO_KEY` by default. It allows 30 requests per hour per IP, and the room shares one IP. Replace it with a real key in **My Settings** before the session.
+- F4 uses `DEMO_KEY` by default, which the whole room shares (30 requests per hour per IP). Each attendee gets their own free key at api.nasa.gov as pre-work (step 5 of PREWORK.md) and pastes it in **My Settings**.
 - F6 and F7 use the model `models/gemini-3.1-flash-lite`. Check at rehearsal that the key accepts it.
+- F8 needs the workflow to be published before the MCP Server Trigger has a Production URL. Each attendee must change the path of the server to a unique name. Check at rehearsal that the staging instance can reach its own public URL and that Caddy passes the streaming connection.
 - Each flow has a Notes box with its challenge.
 
 ## Closing checklist for attendees

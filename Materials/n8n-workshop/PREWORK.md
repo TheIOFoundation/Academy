@@ -32,9 +32,13 @@ It takes about 15 minutes. You need a phone with Telegram and a laptop connected
 
 If AI Studio refuses your account, tell the instructor before the workshop.
 
-## 5. NASA key (optional)
+## 5. Get your own NASA API key (needed for flow F4)
 
-For flow F4 you can get your own free key at https://api.nasa.gov (it arrives by email within a minute). If you skip this, the instructor will tell you which key to use.
+1. Go to https://api.nasa.gov and fill in the Generate API Key form (first name, last name and email).
+2. The key appears on the page straight away. NASA also emails it to you.
+3. Keep it. In flow F4 you paste it in the **My Settings** node, in the field `nasaKey`, instead of `DEMO_KEY`.
+
+Do not use `DEMO_KEY` in the room: the whole class shares one limit and it runs out fast.
 
 ## After the workshop
 
