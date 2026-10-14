@@ -1,0 +1,233 @@
+{
+  "name": "WS F2 Earthquake radar",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9651860e-34dc-4e72-abf1-99333e237884",
+      "name": "Click to run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson",
+        "options": {}
+      },
+      "id": "d53d3d53-c062-42c3-b5da-5eea189e7ae7",
+      "name": "Get Earthquakes Last 24h",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "features",
+        "options": {}
+      },
+      "id": "1d29a469-f0e9-49da-9612-a0fe92798fde",
+      "name": "One Item per Quake",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f2-mag",
+              "name": "magnitude",
+              "value": "={{ $json.properties.mag }}",
+              "type": "number"
+            },
+            {
+              "id": "f2-place",
+              "name": "place",
+              "value": "={{ $json.properties.place }}",
+              "type": "string"
+            },
+            {
+              "id": "f2-time",
+              "name": "time",
+              "value": "={{ DateTime.fromMillis($json.properties.time).toUTC().toFormat(\"dd LLL HH:mm\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "782da1b4-d5ed-4fcc-9146-85137f072c16",
+      "name": "Keep What Matters",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f2-cond",
+              "leftValue": "={{ $json.magnitude }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              },
+              "rightValue": 4
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2001b4db-2ecc-4c11-83d4-e02f9d69d610",
+      "name": "Only Strong Quakes",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        896,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "magnitude",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0a18848-6b40-49a8-b2a8-efb1ba154ff1",
+      "name": "Biggest First",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 5
+      },
+      "id": "9e49fdff-ad07-42c4-ae91-7f89af4452ff",
+      "name": "Top 5",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## F2 Earthquake radar\nBuild order: HTTP Request > Split Out > Edit Fields > Filter > Sort > Limit.\n\nChallenge 1: show only quakes with \"Indonesia\" in the place (Filter, string contains).\nChallenge 2: change the feed URL from 2.5_day to 4.5_week.",
+        "height": 456,
+        "width": 1580,
+        "color": 4
+      },
+      "id": "6974cda0-b79d-4c7e-b31a-196d61e699c3",
+      "name": "Notes F2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        -240
+      ]
+    }
+  ],
+  "connections": {
+    "Click to run": {
+      "main": [
+        [
+          {
+            "node": "Get Earthquakes Last 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Earthquakes Last 24h": {
+      "main": [
+        [
+          {
+            "node": "One Item per Quake",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One Item per Quake": {
+      "main": [
+        [
+          {
+            "node": "Keep What Matters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep What Matters": {
+      "main": [
+        [
+          {
+            "node": "Only Strong Quakes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only Strong Quakes": {
+      "main": [
+        [
+          {
+            "node": "Biggest First",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Biggest First": {
+      "main": [
+        [
+          {
+            "node": "Top 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

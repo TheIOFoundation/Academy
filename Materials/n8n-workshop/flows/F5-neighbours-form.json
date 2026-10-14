@@ -1,0 +1,178 @@
+{
+  "name": "WS F5 Neighbour's form",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Send a message to my phone",
+        "formDescription": "Whatever you type here lands on my Telegram within seconds.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your name",
+              "fieldName": "name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Your message",
+              "fieldType": "textarea",
+              "fieldName": "message",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "How urgent?",
+              "fieldType": "dropdown",
+              "fieldName": "urgency",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Normal"
+                  },
+                  {
+                    "option": "Urgent"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "buttonLabel": "Send",
+          "respondWithOptions": {
+            "values": {
+              "formSubmittedText": "Delivered. Check their phone."
+            }
+          }
+        }
+      },
+      "id": "49062521-21db-443d-b92f-74244c417ddf",
+      "name": "Message Form",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f5-cond",
+              "leftValue": "={{ $json.urgency }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              },
+              "rightValue": "Urgent"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "99be4179-a366-42c8-bf49-1f7273c9d9b2",
+      "name": "Is It Urgent?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        224,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "PUT-YOUR-CHAT-ID-HERE",
+        "text": "=URGENT from {{ $json.name }}: {{ $json.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_notification": false
+        }
+      },
+      "id": "d1b5e31c-e071-4e02-99ec-48c096a4b437",
+      "name": "Send Urgent",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "PUT-YOUR-CHAT-ID-HERE",
+        "text": "={{ $json.name }} says: {{ $json.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_notification": true
+        }
+      },
+      "id": "8d841db2-5a97-4fc0-96dc-b1f2faa15cbc",
+      "name": "Send Normal",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## F5 Neighbour's form\n1) Put your chat ID in both Telegram nodes. 2) Publish the workflow. 3) Open \"Message Form\" and copy the Production URL. 4) Send it to your neighbour and fill in theirs.\n\nChallenge: add a Data Table node after each Telegram node to keep a log of messages (create a Data Table first). Think about what personal data you are storing and for how long.",
+        "height": 552,
+        "width": 828,
+        "color": 6
+      },
+      "id": "f3c61624-602f-40b0-8ac7-687458d77dde",
+      "name": "Notes F5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        -192
+      ]
+    }
+  ],
+  "connections": {
+    "Message Form": {
+      "main": [
+        [
+          {
+            "node": "Is It Urgent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is It Urgent?": {
+      "main": [
+        [
+          {
+            "node": "Send Urgent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Normal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

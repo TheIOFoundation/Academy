@@ -1,0 +1,261 @@
+{
+  "name": "WS F3 Phone buzz",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1d9ac47c-587d-4766-aa67-e1a3371f4a30",
+      "name": "Click to run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson",
+        "options": {}
+      },
+      "id": "909713f1-68a2-48ec-9cc2-78563b3f042d",
+      "name": "Get Earthquakes Last 24h",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "features",
+        "options": {}
+      },
+      "id": "80fb0d61-f9cd-4391-bb3b-941ecb332448",
+      "name": "One Item per Quake",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3-mag",
+              "name": "magnitude",
+              "value": "={{ $json.properties.mag }}",
+              "type": "number"
+            },
+            {
+              "id": "f3-place",
+              "name": "place",
+              "value": "={{ $json.properties.place }}",
+              "type": "string"
+            },
+            {
+              "id": "f3-time",
+              "name": "time",
+              "value": "={{ DateTime.fromMillis($json.properties.time).toUTC().toFormat(\"dd LLL HH:mm\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5f5570f9-7c62-4385-ab90-e7b66d74d8fd",
+      "name": "Keep What Matters",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f3-cond",
+              "leftValue": "={{ $json.magnitude }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              },
+              "rightValue": 4
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "80961f1e-ba74-48f7-b967-0ff0d4b9399f",
+      "name": "Only Strong Quakes",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        896,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "magnitude",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9daa4be7-e718-4eb3-821a-b988560303fb",
+      "name": "Biggest First",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "id": "b36c6cf6-3c3f-4217-a87e-74c13bd9f935",
+      "name": "Top 3",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "PUT-YOUR-CHAT-ID-HERE",
+        "text": "=Earthquake M{{ $json.magnitude }} - {{ $json.place }} ({{ $json.time }} UTC)",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "da55a210-e24c-4650-b944-8f7ec429e5c0",
+      "name": "Send to My Phone",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1568,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## F3 Phone buzz\nBefore running: 1) message @BotFather, send /newbot, copy the token. 2) Create a Telegram credential with that token. 3) Open your new bot and press Start. 4) Get your chat ID from @get_id_bot and paste it in the last node.\n\nChallenge: add the quake link to the message.",
+        "height": 504,
+        "width": 1740,
+        "color": 5
+      },
+      "id": "26ddc8ed-de6e-4de8-bd82-92f9eb4a9795",
+      "name": "Notes F3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -320
+      ]
+    }
+  ],
+  "connections": {
+    "Click to run": {
+      "main": [
+        [
+          {
+            "node": "Get Earthquakes Last 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Earthquakes Last 24h": {
+      "main": [
+        [
+          {
+            "node": "One Item per Quake",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One Item per Quake": {
+      "main": [
+        [
+          {
+            "node": "Keep What Matters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep What Matters": {
+      "main": [
+        [
+          {
+            "node": "Only Strong Quakes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only Strong Quakes": {
+      "main": [
+        [
+          {
+            "node": "Biggest First",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Biggest First": {
+      "main": [
+        [
+          {
+            "node": "Top 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 3": {
+      "main": [
+        [
+          {
+            "node": "Send to My Phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

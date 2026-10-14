@@ -1,0 +1,142 @@
+{
+  "name": "WS F1 City weather",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "37ff277c-1ff0-4260-81f6-c05203327ccc",
+      "name": "Click to run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1-city",
+              "name": "city",
+              "value": "Jakarta",
+              "type": "string"
+            },
+            {
+              "id": "f1-lat",
+              "name": "latitude",
+              "value": -6.2,
+              "type": "number"
+            },
+            {
+              "id": "f1-lon",
+              "name": "longitude",
+              "value": 106.8,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bc12c6dc-7ea0-4674-a89d-13d77a116e13",
+      "name": "Your City",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.open-meteo.com/v1/forecast?latitude={{ $json.latitude }}&longitude={{ $json.longitude }}&current=temperature_2m,wind_speed_10m",
+        "options": {}
+      },
+      "id": "868c416f-9236-4e7a-80a2-c0168fe62ce6",
+      "name": "Get Live Weather",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1-msg",
+              "name": "message",
+              "value": "=It is {{ $json.current.temperature_2m }}°C in {{ $(\"Your City\").item.json.city }} right now, wind {{ $json.current.wind_speed_10m }} km/h.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aa51fd1a-ed61-4f8a-9401-19dec8388f06",
+      "name": "Make a Sentence",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## F1 City weather\nChange the city, latitude and longitude in \"Your City\" and run again.\n\nChallenge: add a second field \"humidity\" (add relative_humidity_2m to the URL after current=).",
+        "height": 440,
+        "width": 940,
+        "color": 4
+      },
+      "id": "b3cb6a3a-bddf-4b32-b7f3-65e3ac5fbe2f",
+      "name": "Notes F1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -288
+      ]
+    }
+  ],
+  "connections": {
+    "Click to run": {
+      "main": [
+        [
+          {
+            "node": "Your City",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Your City": {
+      "main": [
+        [
+          {
+            "node": "Get Live Weather",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Live Weather": {
+      "main": [
+        [
+          {
+            "node": "Make a Sentence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

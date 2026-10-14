@@ -1,0 +1,233 @@
+{
+  "name": "WS F7 Agent with tools",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "streaming"
+        }
+      },
+      "id": "ee49eab1-4e32-41fd-aabf-2f683c2561f0",
+      "name": "Chat With Your Agent",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a friendly assistant for university students. Always reply in the language the user writes in. Use your tools instead of guessing: weather needs the city lookup first and then the forecast, facts come from Wikipedia, maths from the calculator. Keep answers short."
+        }
+      },
+      "id": "91527ec9-fdb3-49a6-b420-f6d841535c69",
+      "name": "Helper Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        480,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "id": "503c3c29-1d29-4805-8b13-f8f4f42aec97",
+      "name": "Gemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "id": "c951ffb1-990a-4478-8cb2-e10f4acf2510",
+      "name": "Remember the Chat",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        352,
+        336
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f172961f-7bba-4c18-b8f1-349ccbb3017e",
+      "name": "Wikipedia",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        480,
+        336
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "77cbfa5c-4251-4932-b29e-b4e65cb31b68",
+      "name": "Calculator",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        608,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Finds latitude and longitude for a city name. Call this first when the user asks about weather in a place.",
+        "url": "https://geocoding-api.open-meteo.com/v1/search?count=1&name={city}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "city",
+              "description": "City name in English",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "74aeff5e-0946-42ef-b7ba-b8fbf9534f27",
+      "name": "Find City Coordinates",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        736,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Returns a 3 day forecast (max temperature and rain probability) for a latitude and longitude.",
+        "url": "https://api.open-meteo.com/v1/forecast?daily=temperature_2m_max,precipitation_probability_max&timezone=auto&forecast_days=3&latitude={latitude}&longitude={longitude}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "latitude",
+              "description": "Latitude as a number",
+              "type": "number"
+            },
+            {
+              "name": "longitude",
+              "description": "Longitude as a number",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "id": "96050b6b-6968-414d-a345-979ca0d20af6",
+      "name": "Get 3 Day Forecast",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        864,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## F7 Agent with tools\nBefore running: create a Google Gemini credential (free API key from aistudio.google.com). Then press \"Open chat\" and try:\n- Should I take an umbrella in Surabaya tomorrow?\n- Who founded Telkom University and how old would it be today?\n\nChallenge: add a tool of your own (for example the earthquake feed from F2 as an HTTP Request Tool).",
+        "height": 536,
+        "width": 1196,
+        "color": 3
+      },
+      "id": "ee202265-9608-438b-931a-a7dcc79b0a12",
+      "name": "Notes F7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        -272
+      ]
+    }
+  ],
+  "connections": {
+    "Chat With Your Agent": {
+      "main": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remember the Chat": {
+      "ai_memory": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find City Coordinates": {
+      "ai_tool": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get 3 Day Forecast": {
+      "ai_tool": [
+        [
+          {
+            "node": "Helper Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

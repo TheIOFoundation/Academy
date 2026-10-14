@@ -1,0 +1,306 @@
+{
+  "name": "WS F6 AI news anchor",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "d32009e3-60f8-4694-854e-873cfe345cea",
+      "name": "Click to run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f6-chat",
+              "name": "chatId",
+              "value": "PUT-YOUR-CHAT-ID-HERE",
+              "type": "string"
+            },
+            {
+              "id": "f6-lang",
+              "name": "language",
+              "value": "Bahasa Indonesia",
+              "type": "string"
+            },
+            {
+              "id": "f6-tone",
+              "name": "tone",
+              "value": "a dramatic TV news anchor",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "254142c9-fd3a-43b5-b9bf-f64362301add",
+      "name": "My Settings",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson",
+        "options": {}
+      },
+      "id": "213a1f46-b377-453b-9212-77ebb7f2f786",
+      "name": "Get Earthquakes Last 24h",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        448,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "features",
+        "options": {}
+      },
+      "id": "6a9903ea-1d57-4d34-9816-7c4c93ee5a96",
+      "name": "One Item per Quake",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        672,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f6-mag",
+              "name": "magnitude",
+              "value": "={{ $json.properties.mag }}",
+              "type": "number"
+            },
+            {
+              "id": "f6-place",
+              "name": "place",
+              "value": "={{ $json.properties.place }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a2c1c985-382b-4b99-8813-8ef510236a72",
+      "name": "Keep What Matters",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "magnitude",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "74fec9a1-3ebe-4ef4-8876-2b2638c7d727",
+      "name": "Biggest First",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        112
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "7ae04f80-eb3a-4b70-ba56-d50ca34c43ed",
+      "name": "Top 1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write a 3 sentence news bulletin in {{ $(\"My Settings\").item.json.language }}, as {{ $(\"My Settings\").item.json.tone }}, about this earthquake: magnitude {{ $json.magnitude }}, location {{ $json.place }}. Stay factual and add one practical safety tip. No hashtags.",
+        "batching": {}
+      },
+      "id": "57bcee72-bdeb-4a78-b350-f5c50424cdc5",
+      "name": "News Anchor",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1568,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite",
+        "options": {}
+      },
+      "id": "c30b088c-f472-48f4-bb16-f52911c3ec44",
+      "name": "Gemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1648,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $(\"My Settings\").item.json.chatId }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "12bf7de3-8623-470f-abb9-5d21b44acb42",
+      "name": "Send Bulletin",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1920,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## F6 AI news anchor\nBefore running: create a Google Gemini credential with a free API key from aistudio.google.com. Fill in \"My Settings\".\n\nChallenge: change the language and tone (pirate? your lecturer? Javanese?). Then rewrite the prompt so it also says whether the quake is dangerous.",
+        "height": 520,
+        "width": 2284,
+        "color": 3
+      },
+      "id": "ce508306-28f2-4517-a26a-ff6bc73891ad",
+      "name": "Notes F6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -240
+      ]
+    }
+  ],
+  "connections": {
+    "Click to run": {
+      "main": [
+        [
+          {
+            "node": "My Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "My Settings": {
+      "main": [
+        [
+          {
+            "node": "Get Earthquakes Last 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Earthquakes Last 24h": {
+      "main": [
+        [
+          {
+            "node": "One Item per Quake",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One Item per Quake": {
+      "main": [
+        [
+          {
+            "node": "Keep What Matters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep What Matters": {
+      "main": [
+        [
+          {
+            "node": "Biggest First",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Biggest First": {
+      "main": [
+        [
+          {
+            "node": "Top 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Top 1": {
+      "main": [
+        [
+          {
+            "node": "News Anchor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "News Anchor": {
+      "main": [
+        [
+          {
+            "node": "Send Bulletin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "News Anchor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
