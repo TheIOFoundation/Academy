@@ -1,0 +1,428 @@
+{
+  "name": "[TIOF] WS-SIMPLE2 All The Triggers.1",
+  "nodes": [
+    {
+      "id": "21534eb6-4a13-5d52-9025-eef91b10e69c",
+      "name": "Manual - Click to run",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        60
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "8d9e96c1-12a0-5dc4-8e29-67662b32e4a9",
+      "name": "Webhook - Open the URL",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        240
+      ],
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "CHANGE-ME-hello"
+      }
+    },
+    {
+      "id": "bfa1826a-0d77-5764-92e3-ff7794c4517b",
+      "name": "Schedule - Every morning",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        420
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "daysInterval": 1,
+              "triggerAtHour": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "7dc90d77-1552-5b85-b3f5-13931172f658",
+      "name": "Form - Fill it in",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        240,
+        600
+      ],
+      "parameters": {
+        "formTitle": "Say hello",
+        "formDescription": "A form is a trigger a person can use.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your name",
+              "fieldName": "name",
+              "fieldType": "text",
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "onReceived",
+        "options": {
+          "path": "CHANGE-ME-form",
+          "respondWithOptions": {
+            "values": {
+              "respondWith": "text",
+              "formSubmittedText": "Thanks. Look at the execution in n8n."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "12445e76-9bfb-5384-80ce-720e23bf5d38",
+      "name": "Chat - Type a message",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        780
+      ],
+      "parameters": {
+        "public": true,
+        "mode": "hostedChat",
+        "initialMessages": "Type your name."
+      }
+    },
+    {
+      "id": "d7ffb7a4-985d-5e46-b1ff-b7b740b7591e",
+      "name": "Edit Fields - From manual",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        60
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "via",
+              "value": "Manual",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "who",
+              "value": "you",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f19c791c-f9e5-5d0f-bc46-0cf50a6c510e",
+      "name": "Edit Fields - From webhook",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        240
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "via",
+              "value": "Webhook",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "who",
+              "value": "={{ $json.query?.name ?? \"someone\" }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d2bcb9ea-e6a4-5398-9dda-a9977fac0bdf",
+      "name": "Edit Fields - From schedule",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        420
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "via",
+              "value": "Schedule",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "who",
+              "value": "the clock",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "886599d7-3246-5c10-bd37-48f83327ea71",
+      "name": "Edit Fields - From form",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        600
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "via",
+              "value": "Form",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "who",
+              "value": "={{ $json.name ?? \"someone\" }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "513e7296-e54b-5c8e-ac46-219dc486a295",
+      "name": "Edit Fields - From chat",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        780
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "via",
+              "value": "Chat",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "who",
+              "value": "={{ $json.chatInput ?? \"someone\" }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "5dbd3db2-4f79-5e40-bbfd-25a8834f0c49",
+      "name": "Edit Fields - Stamp",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        420
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "via",
+              "value": "={{ $json.via }}",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "who",
+              "value": "={{ $json.who }}",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-2",
+              "name": "at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-3",
+              "name": "output",
+              "value": "=Hello {{ $json.who }}. I was started by: {{ $json.via }}.",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a89c7809-43a7-582b-8276-c4c8cb0ff6cb",
+      "name": "Sticky - Simple 2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        160,
+        -200
+      ],
+      "parameters": {
+        "content": "## SIMPLE 2 - All the triggers\nFive ways to start a flow. Each one tags itself, then they all meet in one node. Run each trigger once and compare the executions.\n\nManual: click. Webhook: open the URL in the browser (add ?name=you). Form: open the form URL. Chat: open the chat URL. Schedule: runs at 06:00 once the workflow is published.\n\nBefore use: set the Webhook path to yourname-hello and the Form path to yourname-form.",
+        "color": 4,
+        "width": 700,
+        "height": 220
+      }
+    }
+  ],
+  "connections": {
+    "Manual - Click to run": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - From manual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - From manual": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Stamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook - Open the URL": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - From webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - From webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Stamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule - Every morning": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - From schedule",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - From schedule": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Stamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form - Fill it in": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - From form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - From form": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Stamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat - Type a message": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - From chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - From chat": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Stamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Jakarta"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

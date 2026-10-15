@@ -1,0 +1,144 @@
+{
+  "name": "[TIOF] WS-SIMPLE1 Webhook to Email.1",
+  "nodes": [
+    {
+      "id": "2abf69f7-411f-5bff-9d8c-072087fb9276",
+      "name": "Webhook - Open the URL",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        240
+      ],
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "CHANGE-ME-mail",
+        "responseMode": "responseNode"
+      }
+    },
+    {
+      "id": "3525dd2f-7cfc-5988-9cfd-cdd1033b7e1e",
+      "name": "Edit Fields - Subject and message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        240
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "Edit F-0",
+              "name": "subject",
+              "value": "={{ ($json.query?.subject ?? \"Hello from my n8n\").toString().slice(0, 100) }}",
+              "type": "string"
+            },
+            {
+              "id": "Edit F-1",
+              "name": "message",
+              "value": "={{ ($json.query?.message ?? \"It works.\").toString().slice(0, 500) }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "da645eda-5c59-59a7-84c5-e96fd448111d",
+      "name": "Send Email - To myself",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        720,
+        240
+      ],
+      "parameters": {
+        "resource": "email",
+        "operation": "send",
+        "fromEmail": "YOUR-EMAIL@example.com",
+        "toEmail": "YOUR-EMAIL@example.com",
+        "subject": "={{ $json.subject }}",
+        "emailFormat": "text",
+        "text": "={{ $json.message }}",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    },
+    {
+      "id": "90edbb1c-8f2b-5a6a-9283-9fa688524fe0",
+      "name": "Respond - Sent",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        960,
+        240
+      ],
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Sent: {{ $(\"Edit Fields - Subject and message\").item.json.subject }}"
+      }
+    },
+    {
+      "id": "c98eaf2d-b999-5ff3-ad37-c33c150b5487",
+      "name": "Sticky - Simple 1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        160,
+        20
+      ],
+      "parameters": {
+        "content": "## SIMPLE 1 - Webhook to email\nOpen the Test URL in your browser with ?subject=Hi&message=Hello and an email lands in your own inbox.\n\nBefore use: (1) set the Webhook path to yourname-mail. (2) put YOUR address in From and To on the Send Email node. (3) create your own SMTP credential (Gmail: smtp.gmail.com, port 465, SSL on, an App Password as the password).",
+        "color": 4,
+        "width": 760,
+        "height": 200
+      }
+    }
+  ],
+  "connections": {
+    "Webhook - Open the URL": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Subject and message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - Subject and message": {
+      "main": [
+        [
+          {
+            "node": "Send Email - To myself",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email - To myself": {
+      "main": [
+        [
+          {
+            "node": "Respond - Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}
